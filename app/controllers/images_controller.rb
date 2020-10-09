@@ -5,6 +5,10 @@ class ImagesController < ApplicationController
 
   def new
     @image = Image.new
+  end
+
+  def create
+    @image = Image.new(image_params)
     if @image.save
       redirect_to images_path
     else
@@ -15,7 +19,7 @@ class ImagesController < ApplicationController
   def edit
     @image = Image.find(params[:id])
   end
-
+ 
   def update
     @image = Image.find(params[:id])
     if @image.update(image_params)
@@ -25,6 +29,7 @@ class ImagesController < ApplicationController
       render :edit
     end
   end
+ 
   def show
     @image = Image.find(params[:id])
     # 参照先のS3オブジェクトURLを作成

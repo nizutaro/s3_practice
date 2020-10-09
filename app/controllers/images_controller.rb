@@ -33,9 +33,7 @@ class ImagesController < ApplicationController
   def show
     @image = Image.find(params[:id])
     # 参照先のS3オブジェクトURLを作成
-    @image_url = "https://image-files-original-niduka.s3-ap-northeast-1.amazonaws.com/store/" + @image.image_id 
-    #+ "-thumbnail."
-    #将来resizeを参照させたい
+    @image_url = "https://image-files-resize-niduka.s3-ap-northeast-1.amazonaws.com/store/" + @image.image_id + "-thumbnail."
   end
 
   def destroy
